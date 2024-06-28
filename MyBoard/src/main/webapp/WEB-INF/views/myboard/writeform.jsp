@@ -15,11 +15,11 @@
 	<table border="1" style="width: 1000px">
 		<tr>
 			<td class="orange">제목</td>
-			<td><input name="title"/></td>
+			<td><input name="title" required/></td>
 		</tr>
 		<tr>
 			<td class="orange">작성자</td>
-			<td><input name="id" value="${user.id}" readonly></td>
+			<td><input id="id" name="id" value="${user.id}" readonly></td>
 		</tr>
 		<tr>
 			<td class="orange">내용</td>
@@ -33,7 +33,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<input type="button" id="submit" value="새글 등록">
+				<input type="submit" id="submit" onsubmit="return submit();" value="새글 등록">
 				<input type="button" id="save" value="임시저장"> 
 			</td>
 		</tr>
@@ -41,17 +41,25 @@
 
 </form:form>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script>
+
+function submit(){
+	if($("#id").val() == ""){
+		alert("먼저 로그인 해주세요.");
+		location.href="/mem/login";
+		return false;
+	}else{
+		return true;
+	}
+}
 
     $(document).ready(function() {
   
-      smartEditor() 
-      
-      $("#save").click(function(){
-    	  oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", []);
-    	  $("#writeform").submit();
-      });
+     $("#save").click(function(){
+    	 console.log("save");
+    	 //미구현
+     })
+     
       
     })
   </script>

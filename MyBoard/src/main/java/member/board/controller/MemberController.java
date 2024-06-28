@@ -55,7 +55,7 @@ public class MemberController {
 		}else {
 			m.addAttribute("user",db);
 		}
-		return "myboard/list";
+		return "redirect:/myboard/list";
 	}
 
 	// 회원 가입
